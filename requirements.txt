@@ -24,3 +24,4 @@ winshell~=0.6
 geopy~=2.3.0
 pywikihow~=0.5.7
 psutil~=5.9.4
+cohere~=3.8.0
