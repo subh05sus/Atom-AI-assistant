@@ -43,7 +43,7 @@ This is a Python voice assistant that is integrated with <b>ChatGPT and DALLE-2 
 <li>PyAudio (for voice recognition)</li>
 <li>chatbot (for ChatGPT integration)</li>
 <li>DALI driver (for DALI integration)</li>
-<li>co:here</li>
+<li>cohere</li>
 </ul>
 
 <h2>Installation</h2>
