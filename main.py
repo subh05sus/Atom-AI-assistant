@@ -30,7 +30,7 @@ import cohere
 co = cohere.Client("WoCIsw0H3SOeEuHtzGGmQeP28i7CDHiIT6GAgpsK")
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 
@@ -479,9 +479,8 @@ if __name__ == "__main__":
                 engine1.setProperty('voice', voices[1].id)
                 r = srecog.Recognizer()
                 mic = srecog.Microphone(device_index=1)
-                conversation = ""
-                speak("Please Say your name !")
-                user_name = takeCommand()
+                conversation = "You are now Atom, a very smart personal assistant. Your responses will inlcude noly answers to my questions."
+                user_name ="Subinoy"
                 bot_name = "nucleus"
                 print("Hey,"+user_name)
                 while True:
