@@ -25,3 +25,6 @@ geopy~=2.3.0
 pywikihow~=0.5.7
 psutil~=5.9.4
 cohere~=3.8.0
+PyAudio~=0.2.13
+numpy~=1.24.2
+matplotlib~=3.7.0
