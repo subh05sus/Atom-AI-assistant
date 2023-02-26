@@ -1,14 +1,15 @@
 # Atom-AI-assistant
 <img src="https://socialify.git.ci/subhadip-saha-05/Atom-AI-assistant/image?description=1&descriptionEditable=A%20Simple%20Python%20Voice%20Assistant&font=Bitter&language=1&name=1&owner=1&pattern=Floating%20Cogs&theme=Dark" alt="">
 
-<p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Atom Voice Assistant with ChatGPT and DALI
-This is a Python voice assistant that is integrated with ChatGPT and DALI. With this assistant, you can perform a variety of tasks using natural language commands.
+<p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Atom Voice Assistant with ChatGPT and DALLE-2
+This is a Python voice assistant that is integrated with <b>ChatGPT and DALLE-2 and Cohere</b>. With this assistant, you can perform a variety of tasks using natural language commands.
 </p>
 <h2>Features</h2>
 <ul>
   <li>Voice recognition for natural language commands</li>
 <li>Integration with ChatGPT for chatbot functionality</li>
-<li>Integration with DALI for smart home control</li>
+<li>Integration with DALLE-2 for Image generation</li>
+<li>Integration with Cohere for Text generation and summarization</li>
 </ul>
 <h2>Requirements</h2>
 <ul style="list-style: circle;">
@@ -74,18 +75,16 @@ take place.</li>
 </ul>
 
 <h2>Customization</h2>
-<p>You can customize the assistant's behavior by editing the config.json file. This file contains settings for the voice recognition module, the ChatGPT module, and the DALI module. You can adjust these settings to fit your needs.</p>
+<p>You can customize the assistant's behavior by editing the config.json file. This file contains settings for the voice recognition module, the ChatGPT module, and the DALLE-2 module. You can adjust these settings to fit your needs.</p>
 
 <h2>Troubleshooting</h2>
 <p>If the assistant is not recognizing your voice commands, make sure that your microphone is connected and configured correctly.
 If the ChatGPT module is not working correctly, make sure that you have an internet connection and that your API key is valid.
-If the DALI module is not working correctly, make sure that your DALI devices are connected and configured correctly.
+If the DALLE-2 module is not working correctly, make sure that your DALLE-2 devices are connected and configured correctly.
 </p>
 <h3>Credits</h3>
 <ul style="list-style: circle;">
-    <li>This project uses the ChatGPT library from OpenAI (https://openai.com/)
-    </li>
-    <li>This project uses the DALI driver from Signify (https://www.signify.com/en-us/brands/dali)
+    <li>This project uses the ChatGPT and DALLE-2 library from OpenAI (https://openai.com/)
     </li>
     <li>This project uses the co:here api from co:here (https://cohere.ai/)</li>
 </ul>
