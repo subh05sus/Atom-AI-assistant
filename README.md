@@ -50,7 +50,7 @@ This is a Python voice assistant that is integrated with <b>ChatGPT and DALLE-2 
 <ul style="list-style: circle;">
     <li>Clone the repository to your local machine.</li>
     <li>Install the required packages using pip: pip install -r requirements.txt</li>
-    <li>Connect your DALI devices to your network and configure the DALI driver accordingly.</li>
+
 
 </ul>
 <h2>Minimum system requirements</h2>
