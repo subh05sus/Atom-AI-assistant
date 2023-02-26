@@ -30,7 +30,7 @@ import cohere
 co = cohere.Client("WoCIsw0H3SOeEuHtzGGmQeP28i7CDHiIT6GAgpsK")
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 
@@ -405,7 +405,22 @@ if __name__ == "__main__":
                 data = search_wikihow(query, max_results)
                 # assert len(data) == 1
                 data[0].print()
+                steps = data[0].summary
                 speak(data[0].summary)
+
+                speak("should I summarize this for you?")
+                ynInput=takeCommand()
+                if 'yes' in ynInput.lower():
+                    response = co.generate( 
+                        model='xlarge', 
+                        prompt = steps,
+                        max_tokens=40, 
+                        temperature=0.8,
+                        stop_sequences=["--"])
+                    summary = response.generations[0].text
+                    print(summary)
+                    speak(summary)
+
             except Exception as e:
                 speak('Sorry, I am unable to find the answer for your query.')
         
@@ -521,34 +536,22 @@ if __name__ == "__main__":
                 r = srecog.Recognizer()
                 mic = srecog.Microphone(device_index=1)
                 conversation = ""
-                speak("Please Say your name !")
-                user_name = takeCommand()
+                user_name = 'user'
                 bot_name = "nucleus"
-                print("Hey,"+user_name)
-                while True:
-                    with mic as source:
-                        print("\nlistening...")
-                        r.adjust_for_ambient_noise(source, duration=0.2)
-                        audio = r.listen(source)
-                    print("Recognizing...\n")
-                    try:
-                        user_input = r.recognize_google(audio)
-                    except:
-                        continue
-                    
-                    if 'exit' in user_input.lower():
-                        break
-                    else:
-                        prompt = user_name + ": " + user_input + "\n" + bot_name + ": "
-                        conversation += prompt 
-                        response = openai.Completion.create(
-                            engine='text-davinci-003', prompt=conversation, max_tokens=50)
-                        response_str = response["choices"][0]["text"].replace(
-                            "\n", "")
-                        response_str = response_str.split(
-                            user_name + ": ", 1)[0].split(bot_name + ": ", 1)[0]
-                        conversation += response_str + "\n"
-                        print(response_str)
-                        speak(response_str)
-                        engine1.runAndWait()
+
+                if 'exit' in query.lower():
+                    break
+                else:
+                    prompt = user_name + ": " + query + "\n" + bot_name + ": "
+                    conversation += prompt 
+                    response = openai.Completion.create(
+                        engine='text-davinci-003', prompt=conversation, max_tokens=50)
+                    response_str = response["choices"][0]["text"].replace(
+                        "\n", "")
+                    response_str = response_str.split(
+                        user_name + ": ", 1)[0].split(bot_name + ": ", 1)[0]
+                    conversation += response_str + "\n"
+                    print(response_str)
+                    speak(response_str)
+                    engine1.runAndWait()
 
