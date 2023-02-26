@@ -30,7 +30,7 @@ import cohere
 co = cohere.Client("WoCIsw0H3SOeEuHtzGGmQeP28i7CDHiIT6GAgpsK")
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 
