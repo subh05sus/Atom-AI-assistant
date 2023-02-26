@@ -466,50 +466,7 @@ if __name__ == "__main__":
             print(summary)
             speak(summary)
 
-        elif "initiate" in query or "chat" in query or "nucleus" in query or "gpt" in query:
-            speak("Connecting to nucleus")
-           
-            api_open=openai.api_key
-            if api_open=="":
-                speak("API isn't connected Right Now")
-                speak("Please Insert API key before you use nucleus")
-            else:
-                engine1 = pyttsx3.init()
-                voices = engine1.getProperty('voices')
-                engine1.setProperty('voice', voices[1].id)
-                r = srecog.Recognizer()
-                mic = srecog.Microphone(device_index=1)
-                conversation = "You are now Atom, a very smart personal assistant. Your responses will inlcude noly answers to my questions."
-                user_name ="Subinoy"
-                bot_name = "nucleus"
-                print("Hey,"+user_name)
-                while True:
-                    with mic as source:
-                        print("\nlistening...")
-                        r.adjust_for_ambient_noise(source, duration=0.2)
-                        audio = r.listen(source)
-                    print("Recognizing...\n")
-                    try:
-                        user_input = r.recognize_google(audio)
-                    except:
-                        continue
-                    
-                    if 'exit' in user_input.lower():
-                        break
-                    else:
-                        prompt = user_name + ": " + user_input + "\n" + bot_name + ": "
-                        conversation += prompt 
-                        response = openai.Completion.create(
-                            engine='text-davinci-003', prompt=conversation, max_tokens=50)
-                        response_str = response["choices"][0]["text"].replace(
-                            "\n", "")
-                        response_str = response_str.split(
-                            user_name + ": ", 1)[0].split(bot_name + ": ", 1)[0]
-                        conversation += response_str + "\n"
-                        print(response_str)
-                        speak(response_str)
-                        engine1.runAndWait()
-        
+    
         elif 'create image' in query or 'generate image' in query or 'image with ai' in query or 'image with artificial intelligence' in query:
             speak("What kind of photo do you want to generate?")
             imageinfo=takeCommand()
