@@ -24,7 +24,10 @@ from pywikihow import search_wikihow
 import openai
 import psutil
 import wmi
+import cohere
 
+
+co = cohere.Client("WoCIsw0H3SOeEuHtzGGmQeP28i7CDHiIT6GAgpsK")
 
 
 openai.api_key = "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"
@@ -111,6 +114,7 @@ if __name__ == "__main__":
             print(results)
             speak(results)
             speak("anything else for which i may assist you")
+        
         elif 'screenshot' in query:
             speak("screenshot taking ,sir")
             times = time.time()
@@ -118,40 +122,51 @@ if __name__ == "__main__":
             img = pyautogui.screenshot(name_img)
             speak("screenshot is taken, sir")
             img.show()
+        
         elif 'read' in query and 'clipboard' in query:
             text = clipboard.paste()
             try:
                 speak(text)
             except Exception as e:
                 speak("Cannot read the text ,sir")
-     
+      
         elif 'what you want to do' in query:
             speak("I want to help people to do certain tasks on their single voice commands.")
+        
         elif 'alexa' in query:
             speak("I don't know Alexa, but I've heard of Alexa. If you have Alexa, "
                         "I may have just triggered Alexa. If so, sorry Alexa.")
+        
         elif 'google assistant' in query:
             speak("He was my classmate, too intelligent guy. We both are best friends.")
+        
         elif 'siri' in query:
             speak("Siri, She's a competing virtual assistant on   a competitor's phone. "
                         "Not that I'm competitive or anything.")
+        
         elif 'cortana' in query:
             speak("I thought you'd never ask. So I've never thought about it.")
+        
         elif 'python assistant' in query:
             speak("Are you joking. You're coming in loud and clear.")
+        
         elif 'what language you use' in query:
             speak("I am written in Python and I generally speak english.")
+        
         elif 'what can you do' in query:
-            speak('I am atom version 1 point O your persoanl assistant. I am programmed to minor tasks like searching in youtube, google,open gmail and various platforms ,tell time and date,take a photo,search in wikipedia, predict weather in different cities , get top headline news from times of india, tell about system and can do some automations too and besides it all, I can generate pictures with your imagination with the help of AI!, after this all, I have my friend, Veronica, she is just awesome, I can connect with her too.')
+            speak('I am atom version 1 point O your persoanl assistant. I am programmed to minor tasks like searching in youtube, google,open gmail and various platforms ,tell time and date,take a photo,search in wikipedia, predict weather in different cities , get top headline news from times of india, tell about system and can do some automations too and besides it all, I can generate pictures with your imagination with the help of AI!, after this all, I have my friend, nucleus, she is just awesome, I can connect with her too.')
             speak("Just give me commands Master!")
+        
         elif 'show me' in query and 'news' in query:
             news = webbrowser.open_new_tab("https://timesofindia.indiatimes.com/home/headlines")
             speak('Here are some headlines from the Times of India,Happy reading')
             time.sleep(6)
+        
         elif 'open youtube' in query:
             speak("Here We Go")
             webbrowser.open("youtube.com")
             speak("anything else for which i may assist you")
+        
         elif 'youtube' in query and 'search' in query:
             speak("What Should I Search Sir ?")
             search_yt=takeCommand()
@@ -159,22 +174,27 @@ if __name__ == "__main__":
             speak("Here We Go")
             webbrowser.open(f"https://www.youtube.com/results?search_query={search_yt}")
             speak("anything else for which i may assist you")
+        
         elif 'open google' in query:
             speak("Here We Go")
             webbrowser.open("google.com")
             speak("anything else for which i may assist you")
+        
         elif 'show' in query and 'mails' in query:
             speak("Here We Go")
             webbrowser.open("mail.google.com")
             speak("anything else for which i may assist you")
+        
         elif 'open instagram' in query:
             speak("Here We Go")
             webbrowser.open("instagram.com")
             speak("anything else for which i may assist you")
+        
         elif 'open facebook' in query:
             speak("Here We Go")
             webbrowser.open("facebook.com")
             speak("anything else for which i may assist you")
+        
         elif 'spotify' in query:
             speak("Which song you want to listen to ?")
             songName = takeCommand()
@@ -190,20 +210,25 @@ if __name__ == "__main__":
                 time.sleep(5)
             except:
                 speak("Sorry Sir, There is an error")
+        
         elif 'open twitter' in query:
             speak("Here We Go")
             webbrowser.open("twitter.com")
             speak("anything else for which i may assist you")
+        
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(strTime)
             speak("anything else for which i may assist you")
+        
         elif 'the date' in query:
             today=datetime.date.today()
             speak(today)
             speak("anything else for which i may assist you")
+        
         elif query == 'atom':
             speak("At Your Service Sir, How can I help you")
+        
         elif 'joke' in query:
             URL = 'https://v2.jokeapi.dev/joke/Any'
             response = requests.get(URL)
@@ -213,22 +238,25 @@ if __name__ == "__main__":
                 speak(data['delivery'])
             else:
                 speak(list_of_jokes[ran_joke])
+        
         elif "volume" in query and 'up' in query:
             pyautogui.press("volumeup", presses=5)
             speak("volume upped")
             sleep(1)
             speak("anything else for which i may assist you")
+        
         elif "volume" in query and 'down' in query:
             pyautogui.press("volumedown", presses=5)
             speak("volume lowered")
             sleep(1)
-            speak("anything else for which i may assist you")
-            
+            speak("anything else for which i may assist you")  
+        
         elif "mute" in query:
             pyautogui.press("volumemute")
             speak("volume muted")
             sleep(1)
             speak("anything else for which i may assist you")
+        
         elif "brightness" in query:
             try:
                 speak("Which brighness level do you want ?")
@@ -241,12 +269,14 @@ if __name__ == "__main__":
             except Exception as e:
                 print(e)
                 speak("error")
+        
         elif 'search' in query:
             query=query.replace("search","")
             query=query.replace(" ","+")
             speak("Here We Go")
             webbrowser.open(f"https://www.google.com/search?q={query}")
             speak("anything else for which i may assist you")
+        
         elif 'battery' in query:
             battery = psutil.sensors_battery()
             percentage = battery.percent
@@ -263,6 +293,7 @@ if __name__ == "__main__":
             elif percentage < 15:
                 speak(
                     'Sir we have very low power!... Our System may Shutdown anytime soon!...')
+        
         elif 'todo' in query or 'to do' in query:
             if 'add' in query or 'create' in query:
                 with open('todo.txt','a') as f:
@@ -279,18 +310,22 @@ if __name__ == "__main__":
                 with open("todo.txt","w") as f:
                     f.write("")
                 speak("All Tasks has been cleared, Sir !")
+        
         elif 'pause' in query or 'stop' in query and 'song' in query:
             pyautogui.press("playpause")
             speak("vMusic Paused")
             sleep(1)
             speak("anything else for which i may assist you")
+        
         elif 'change' in query and 'song' in query:
             pyautogui.press("nexttrack", presses=1)
             sleep(1)
             speak("anything else for which i may assist you")
+        
         elif 'atom quit' in query or 'exit' in query or 'close' in query:
             speak("Thank you for using atom Sir")
             exit()
+        
         elif 'note' in query or 'notes' in query:
             speak("What to write on that note?")
             notes=takeCommand()
@@ -299,6 +334,7 @@ if __name__ == "__main__":
 
             speak("We updated your notes successfully !")
             speak("anything else for which i may assist you")
+        
         elif "log off" in query or "sign out" in query:
             speak(
                 "Ok , your pc will log off in 10 seconds! make sure you exit from all applications")
@@ -309,7 +345,7 @@ if __name__ == "__main__":
                 on -= 1
 
             subprocess.call(["shutdown", "/l"])
-        
+                
         elif "weather" in query or 'temperature' in query:
             api_key = "8ef61edcf1c576d65d836254e11ea420"
             base_url = "https://api.openweathermap.org/data/2.5/weather?"
@@ -329,6 +365,7 @@ if __name__ == "__main__":
                 print(f"Temperature is {current_temperature} degree celcius. Humidity is {current_humidiy} percent. Overall, the weather is {weather_description} today.")
             else:
                 speak("Can't find details about this city")
+        
         elif "current news" in query or "latest news" in query:
             url = "https://www.indiatoday.in/india"
             page = requests.get(url)
@@ -338,12 +375,14 @@ if __name__ == "__main__":
             for headline in headlines[:4]:
                 print(headline.text)
                 speak(headline.text)    
+        
         elif "camera" in query or "take a photo" in query:
             ec.capture(0, "atom camera", "img.jpg")
         
         elif "who made you" in query or "who created you" in query or "who discovered you" in query:
             speak("I was built by a Human")
             print("I was built by a Human")
+        
         elif 'distance' in query:
             geocoder = Nominatim(user_agent="Singh")
             speak("Tell me the first city name??")
@@ -359,6 +398,7 @@ if __name__ == "__main__":
             distance_places = distance.distance(place1, place2)
             print(f"The distance between {location1} and {location2} is {distance_places}.")
             speak(f"The distance between {location1} and {location2} is {distance_places}")
+        
         elif 'how to' in query:
             try:
                 max_results = 1
@@ -368,13 +408,56 @@ if __name__ == "__main__":
                 speak(data[0].summary)
             except Exception as e:
                 speak('Sorry, I am unable to find the answer for your query.')
-        elif "initiate" in query or "chat" in query or "veronica" in query or "gpt" in query:
-            speak("Connecting to Veronica")
+        
+        elif 'lock' in query:
+            speak("locking the device")
+            ctypes.windll.user32.LockWorkStation()
+        
+        elif "switch the window" in query or "switch window" in query:
+            speak("Okay sir, Switching the window")
+            pyautogui.keyDown("alt")
+            pyautogui.press("tab")
+            pyautogui.keyUp("alt")
+        
+        elif "system" in query:
+            c = wmi.WMI()
+            my_system = c.Win32_ComputerSystem()[0]
+            print(f"Manufacturer: {my_system.Manufacturer}")
+            speak(f"Manufacturer: {my_system.Manufacturer}")
+            print(f"Model: {my_system. Model}")
+            speak(f"Model: {my_system. Model}")
+            print(f"Name: {my_system.Name}")
+            speak(f"Name: {my_system.Name}")
+            print(f"NumberOfProcessors: {my_system.NumberOfProcessors}")
+            speak(f"NumberOfProcessors: {my_system.NumberOfProcessors}")
+            print(f"SystemType: {my_system.SystemType}")
+            speak(f"SystemType: {my_system.SystemType}")
+            print(f"SystemFamily: {my_system.SystemFamily}")
+            speak(f"SystemFamily: {my_system.SystemFamily}")
+            ip = requests.get('https://api.ipify.org').text
+            print(f"Your ip address is {ip}")
+            speak(f"Your ip address is {ip}")
+
+        elif 'summarize' in query:
+            speak("Oh, I can summarize texts with cohere AI. Tell me the prompt that I may summarize.")
+            prompt = takeCommand()
+            response = co.generate( 
+                model='xlarge', 
+                prompt = prompt,
+                max_tokens=40, 
+                temperature=0.8,
+                stop_sequences=["--"])
+            summary = response.generations[0].text
+            print(summary)
+            speak(summary)
+
+        elif "initiate" in query or "chat" in query or "nucleus" in query or "gpt" in query:
+            speak("Connecting to nucleus")
            
             api_open=openai.api_key
             if api_open=="":
                 speak("API isn't connected Right Now")
-                speak("Please Insert API key before you use Veronica")
+                speak("Please Insert API key before you use nucleus")
             else:
                 engine1 = pyttsx3.init()
                 voices = engine1.getProperty('voices')
@@ -384,7 +467,7 @@ if __name__ == "__main__":
                 conversation = ""
                 speak("Please Say your name !")
                 user_name = takeCommand()
-                bot_name = "Veronica"
+                bot_name = "nucleus"
                 print("Hey,"+user_name)
                 while True:
                     with mic as source:
@@ -410,9 +493,10 @@ if __name__ == "__main__":
                             user_name + ": ", 1)[0].split(bot_name + ": ", 1)[0]
                         conversation += response_str + "\n"
                         print(response_str)
-                        engine1.say(response_str)
+                        speak(response_str)
                         engine1.runAndWait()
-        elif 'generate image' in query or 'image with ai' in query or 'image with artificial intelligence' in query:
+        
+        elif 'create image' in query or 'generate image' in query or 'image with ai' in query or 'image with artificial intelligence' in query:
             speak("What kind of photo do you want to generate?")
             imageinfo=takeCommand()
             if imageinfo == "":
@@ -424,34 +508,47 @@ if __name__ == "__main__":
                 webbrowser.open(image_url)
                 speak(f"Here is is!! {imageinfo}")
                 print(f"Here is is!! {imageinfo}")
-        elif "ip address" in query:
-            ip = requests.get('https://api.ipify.org').text
-            print(ip)
-            speak(f"Your ip address is {ip}")
-        elif 'lock' in query:
-            speak("locking the device")
-            ctypes.windll.user32.LockWorkStation()
-        elif "switch the window" in query or "switch window" in query:
-            speak("Okay sir, Switching the window")
-            pyautogui.keyDown("alt")
-            pyautogui.press("tab")
-            pyautogui.keyUp("alt")
-        elif "system" in query:
-            c = wmi.WMI()
-            my_system = c.Win32_ComputerSystem()[0]
-            print(f"Manufacturer: {my_system.Manufacturer}")
-            speak(f"Manufacturer: {my_system.Manufacturer}")
-            print(f"Model: {my_system. Model}")
-            speak(f"Model: {my_system. Model}")
-            print(f"Name: {my_system.Name}")
-            speak(f"Name: {my_system.Name}")
-            print(f"NumberOfProcessors: {my_system.NumberOfProcessors}")
-            speak(f"NumberOfProcessors: {my_system.NumberOfProcessors}")
-            print(f"SystemType: {my_system.SystemType}")
-            speak(f"SystemType: {my_system.SystemType}")
-            print(f"SystemFamily: {my_system.SystemFamily}")
-            speak(f"SystemFamily: {my_system.SystemFamily}")
+
         else:
-            print("Sorry sir, I can't help ! Please try again")
-            speak("Sorry sir, I can't help ! Please try again")
+            api_open=openai.api_key
+            if api_open=="":
+                speak("API isn't connected Right Now")
+                speak("Please Insert API key before you use nucleus")
+            else:
+                engine1 = pyttsx3.init()
+                voices = engine1.getProperty('voices')
+                engine1.setProperty('voice', voices[1].id)
+                r = srecog.Recognizer()
+                mic = srecog.Microphone(device_index=1)
+                conversation = ""
+                speak("Please Say your name !")
+                user_name = takeCommand()
+                bot_name = "nucleus"
+                print("Hey,"+user_name)
+                while True:
+                    with mic as source:
+                        print("\nlistening...")
+                        r.adjust_for_ambient_noise(source, duration=0.2)
+                        audio = r.listen(source)
+                    print("Recognizing...\n")
+                    try:
+                        user_input = r.recognize_google(audio)
+                    except:
+                        continue
+                    
+                    if 'exit' in user_input.lower():
+                        break
+                    else:
+                        prompt = user_name + ": " + user_input + "\n" + bot_name + ": "
+                        conversation += prompt 
+                        response = openai.Completion.create(
+                            engine='text-davinci-003', prompt=conversation, max_tokens=50)
+                        response_str = response["choices"][0]["text"].replace(
+                            "\n", "")
+                        response_str = response_str.split(
+                            user_name + ": ", 1)[0].split(bot_name + ": ", 1)[0]
+                        conversation += response_str + "\n"
+                        print(response_str)
+                        speak(response_str)
+                        engine1.runAndWait()
 
